@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="English.cs" />
+    <Compile Include="IntegerToRomanNumeralsConverterTest.cs" />
     <Compile Include="NumberToEnglishWords.cs" />
     <Compile Include="SizeGrouper_Tests.cs" />
     <Compile Include="MyTestFixture.cs" />
