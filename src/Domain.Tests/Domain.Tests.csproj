@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="IntegerToRomanNumeralsConverterTest.cs" />
     <Compile Include="NumberToEnglishWords.cs" />
+    <Compile Include="Shopping Cart Tests\ShoppingCartTest.cs" />
+    <Compile Include="Shopping Cart Tests\ProceedCheckoutTest.cs" />
     <Compile Include="SizeGrouper_Tests.cs" />
     <Compile Include="MyTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
