@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace Domain.Tests.Shopping_Cart_Tests
@@ -6,7 +7,7 @@ namespace Domain.Tests.Shopping_Cart_Tests
     [TestFixture]
     public class ShoppingCartTest
     {
-        private ShoppingCart _shoppingCart;
+        private IShoppingCart _shoppingCart;
 
         [SetUp]
         public void SetUp()
@@ -21,7 +22,7 @@ namespace Domain.Tests.Shopping_Cart_Tests
 
             _shoppingCart.AddToCart(item1);
 
-            Assert.AreEqual(_shoppingCart.GetCartItems(), 1);
+            Assert.AreEqual(_shoppingCart.GetCartItems().Count, 1);
         }
 
         [Test]
@@ -33,7 +34,7 @@ namespace Domain.Tests.Shopping_Cart_Tests
             _shoppingCart.AddToCart(item1);
             _shoppingCart.AddToCart(item2);
 
-            Assert.AreEqual(_shoppingCart.GetCartItems(), 2);
+            Assert.AreEqual(_shoppingCart.GetCartItems().Count, 2);
         }
 
         [Test]
@@ -45,19 +46,35 @@ namespace Domain.Tests.Shopping_Cart_Tests
             
             
             _shoppingCart.AddToCart(item1);
-            Assert.AreEqual(_shoppingCart.GetCartItems(), 1);
+            Assert.AreEqual(_shoppingCart.GetCartItems().Count, 1);
             _shoppingCart.AddToCart(item2);
-            Assert.AreEqual(_shoppingCart.GetCartItems(), 1);
+            Assert.AreEqual(_shoppingCart.GetCartItems().Count, 1);
             _shoppingCart.AddToCart(item3);
-            Assert.AreEqual(_shoppingCart.GetCartItems(),1);
+            Assert.AreEqual(_shoppingCart.GetCartItems().Count,1);
         }
     }
 
-    public class ShoppingCart   
+    public interface IShoppingCart
     {
-        static readonly List<CartItem> CartItems = new List<CartItem>();
+        void AddToCart(CartItem item);
+        List<CartItem> GetCartItems();
+    }
+
+    public class ShoppingCart : IShoppingCart, IEnumerable
+    {
+        private static List<CartItem> CartItems = null;
+
+        public ShoppingCart()
+        {
+            CartItems = new List<CartItem>();
+        }
 
         public void AddToCart(CartItem item)
+        {
+            CartItems.Add(item);
+        }
+
+        public void CheckForItemExistInTheShoppingCartAlready(CartItem item)
         {
             if (CartItems.Count > 0)
             {
@@ -74,19 +91,23 @@ namespace Domain.Tests.Shopping_Cart_Tests
 
                 if (!itemFound)
                 {
-                    CartItems.Add(item); 
+                   AddToCart(item);
                 }
             }
             else
             {
-                CartItems.Add(item);    
+                AddToCart(item);
             }
-            
         }
 
-        public int GetCartItems()
+        public List<CartItem> GetCartItems()
         {
-            return CartItems.Count;
+            return CartItems;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new System.NotImplementedException();
         }
     }
 
