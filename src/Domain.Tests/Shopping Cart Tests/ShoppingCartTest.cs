@@ -43,13 +43,13 @@ namespace Domain.Tests.Shopping_Cart_Tests
             var item1 = new CartItem { ProductId = "P1001", Name = "Logitech Mouse", Qty = 1, Price = 5.00 };
             var item2 = new CartItem { ProductId = "P1001", Name = "Logitech Mouse", Qty = 2, Price = 5.00 };
             var item3 = new CartItem { ProductId = "P1001", Name = "Logitech Mouse", Qty = 3, Price = 5.00 };
-            
-            
-            _shoppingCart.AddToCart(item1);
+
+
+            _shoppingCart.CheckItemExistThenAddToCart(item1);
             Assert.AreEqual(_shoppingCart.GetCartItems().Count, 1);
-            _shoppingCart.AddToCart(item2);
+            _shoppingCart.CheckItemExistThenAddToCart(item2);
             Assert.AreEqual(_shoppingCart.GetCartItems().Count, 1);
-            _shoppingCart.AddToCart(item3);
+            _shoppingCart.CheckItemExistThenAddToCart(item3);
             Assert.AreEqual(_shoppingCart.GetCartItems().Count,1);
         }
     }
@@ -58,6 +58,7 @@ namespace Domain.Tests.Shopping_Cart_Tests
     {
         void AddToCart(CartItem item);
         List<CartItem> GetCartItems();
+        void CheckItemExistThenAddToCart(CartItem item);
     }
 
     public class ShoppingCart : IShoppingCart, IEnumerable
@@ -74,27 +75,22 @@ namespace Domain.Tests.Shopping_Cart_Tests
             CartItems.Add(item);
         }
 
-        public void CheckForItemExistInTheShoppingCartAlready(CartItem item)
+        public void CheckItemExistThenAddToCart(CartItem item)
         {
-            if (CartItems.Count > 0)
-            {
-                bool itemFound = false;
-                foreach (var cartItem in CartItems)
-                {
-                    if (cartItem.ProductId.Equals(item.ProductId))
-                    {
-                        itemFound = true;
-                        cartItem.Qty += item.Qty;
-                        break;
-                    }
-                }
+            if (CartItems.Count == 0) AddToCart(item);
 
-                if (!itemFound)
+            bool itemFound = false;
+            foreach (var cartItem in CartItems)
+            {
+                if (cartItem.ProductId.Equals(item.ProductId))
                 {
-                   AddToCart(item);
+                    itemFound = true;
+                    cartItem.Qty += item.Qty;
+                    break;
                 }
             }
-            else
+
+            if (!itemFound)
             {
                 AddToCart(item);
             }
@@ -107,7 +103,7 @@ namespace Domain.Tests.Shopping_Cart_Tests
 
         public IEnumerator GetEnumerator()
         {
-            throw new System.NotImplementedException();
+            return (CartItems as IEnumerable).GetEnumerator();
         }
     }
 
