@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Domain.Tests.Shopping_Cart_Tests
@@ -77,23 +78,11 @@ namespace Domain.Tests.Shopping_Cart_Tests
 
         public void CheckItemExistThenAddToCart(CartItem item)
         {
-            if (CartItems.Count == 0) AddToCart(item);
-
-            bool itemFound = false;
-            foreach (var cartItem in CartItems)
-            {
-                if (cartItem.ProductId.Equals(item.ProductId))
-                {
-                    itemFound = true;
-                    cartItem.Qty += item.Qty;
-                    break;
-                }
-            }
-
-            if (!itemFound)
-            {
+            var cartItem = CartItems.FirstOrDefault(ci => ci.ProductId == item.ProductId);
+            if (cartItem == null)
                 AddToCart(item);
-            }
+            else
+                cartItem.Qty += item.Qty;
         }
 
         public List<CartItem> GetCartItems()
