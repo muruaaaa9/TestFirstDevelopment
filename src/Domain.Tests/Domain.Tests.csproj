@@ -42,12 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegerToRomanNumeralsConverterTest.cs" />
-    <Compile Include="NumberToEnglishWords.cs" />
+    <Compile Include="ITRNCTests\IntegerToRomanNumeralsConverterTest.cs" />
+    <Compile Include="NumberToEnglishWordsTests\NumberToEnglishWords.cs" />
+    <Compile Include="Shopping Cart Tests\SalesRulesTest.cs" />
     <Compile Include="Shopping Cart Tests\ShoppingCartTest.cs" />
-    <Compile Include="Shopping Cart Tests\ProceedCheckoutTest.cs" />
-    <Compile Include="SizeGrouper_Tests.cs" />
-    <Compile Include="MyTestFixture.cs" />
+    <Compile Include="AdhocTests\SizeGrouper_Tests.cs" />
+    <Compile Include="AdhocTests\MyTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

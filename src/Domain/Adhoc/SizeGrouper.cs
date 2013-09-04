@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.Adhoc
 {
     public class SizeGrouper
     {

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Domain.Adhoc;
 using NUnit.Framework;
 
-namespace Domain.Tests
+namespace Domain.Tests.AdhocTests
 {
     public class SizeGrouper_Tests
     {

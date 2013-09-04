@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Domain.IntegerToRomanNumerals;
+using NUnit.Framework;
 
-namespace Domain.Tests
+namespace Domain.Tests.ITRNCTests
 {
     [TestFixture]
     public class IntegerToRomanNumeralsConverterTest

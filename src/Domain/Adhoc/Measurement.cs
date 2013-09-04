@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace Domain.Adhoc
 {
     public class Measurement
     {

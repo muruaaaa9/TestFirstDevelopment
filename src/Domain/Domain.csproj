@@ -39,15 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="English.cs" />
-    <Compile Include="IntegerToRomanNumeralConverter.cs" />
-    <Compile Include="Measurement.cs" />
+    <Compile Include="NumberToEnglishWords\English.cs" />
+    <Compile Include="IntegerToRomanNumerals\IntegerToRomanNumeralConverter.cs" />
+    <Compile Include="Adhoc\Measurement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SizeGrouper.cs" />
+    <Compile Include="ShoppingCart\CartItem.cs" />
+    <Compile Include="ShoppingCart\IShoppingCart.cs" />
+    <Compile Include="ShoppingCart\SaleRules.cs" />
+    <Compile Include="ShoppingCart\ShoppingCart.cs" />
+    <Compile Include="Adhoc\SizeGrouper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Shopping Cart\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

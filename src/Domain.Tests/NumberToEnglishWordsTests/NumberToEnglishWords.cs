@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.NumberToEnglishWords;
 using NUnit.Framework;
 
-namespace Domain.Tests
+namespace Domain.Tests.NumberToEnglishWordsTests
 {
     [TestFixture]
     public class NumberToEnglishWords

@@ -1,6 +1,4 @@
-﻿// ReSharper disable CheckNamespace
-namespace Domain.Tests
-// ReSharper restore CheckNamespace
+﻿namespace Domain.NumberToEnglishWords
 {
     public class English    
     {
